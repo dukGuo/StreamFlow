@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://QicongXie.github.io/end2endvc/ -->
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+  <title>StreamingFM: Streaming Flow Matching with Block-wise Guided Attention Mask for Speech Token Decoding</title>
+  <meta name="generator" content="Jekyll v3.9.0">
+  <meta property="og:title" content="title">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <!-- End Jekyll SEO tag -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <link rel="stylesheet" href="style.css">
+  <style>
+        .method {
+            display: inline-block;
+/*             width: 120px; /* Adjust the width as needed */ */
+            font-weight: bold;
+        }
+
+        .explanation {
+            display: inline-block;
+/*             margin-left: 20px; /* Adjust the margin as needed */ */
+        }
+    </style>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1001.0" data-gr-ext-installed="">
+  <section class="page-header">
+    <!-- <h1 class="project-name">Demo PAGE</h1> -->
+    <!-- <h2 class="project-tagline"></h2> -->
+
+
+  </section>
+
+  <section class="main-content">
+    <h1 id="">
+      <center>StreamingFM: Streaming Flow Matching with Block-wise Guided Attention Mask for Speech Token Decoding</center>
+    </h1>
+
+    <h3 id="">
+      <center>A work submitted to INTERSPEECH 2024</center>
+    </h3>
+
+
+
+    <br><br>
+    <h2 id="abstract">1. Abstract<a name="abstract"></a></h2>
+    <p>Recent advancements in discrete token-based speech generation have highlighted the importance of token-to-waveform
+    generation for audio quality, particularly in real-time interactions. Traditional frameworks integrating semantic tokens
+    with flow matching (FM) struggle with streaming capabilities due to their reliance on a global receptive field.
+    Additionally, directly implementing token-by-token streaming speech generation often results in degraded audio quality.
+    To address these challenges, we propose StreamingFM, a novel neural architecture that facilitates streaming flow
+    matching with diffusion transformers (DiT). To mitigate the long-sequence extrapolation issues arising from lengthy
+    historical dependencies, we have designed a local block-wise receptive field strategy. Specifically, the sequence is
+    first segmented into blocks, and we introduce block-wise attention masks that enable the current block to receive
+    information from the previous or subsequent block. These attention masks are combined hierarchically across different
+    DiT-blocks to regulate the receptive field of DiTs.
+    Both subjective and objective experimental results demonstrate that our approach achieves performance comparable to
+    non-streaming methods while surpassing other streaming methods in terms of speech quality, all the while effectively
+    managing inference time during long-sequence generation. Furthermore, our method achieves a notable first-packet latency
+    of only 180 ms.</p>
+    <br><br>
+
+        <center><img src='raw/fig/overall.png' width="70%"></center>
+        <br><br>
+        <center><span><b>Figure 1. Overview of our framework</b></span></center>
+
+    <br><br>
+
+
+    <h2>2. Demos <a name="Comparison"></a></h2>
+    <!-- <p>Methods</p>
+    <ul>
+      <li><b><a href="https://github.com/fishaudio/Bert-VITS2">VITS : </a></b>a VITS2 with multilingual BERT<sup>1</sup></li> 
+      <li><b>TACA-VITS : </b>A Text-Aware and Context-Aware VITS</li>
+      <li><b>LM : </b>A LM with Hubert token</li>        
+      <li><b>TACA-VITS : </b> A Text-Aware and Context-Aware LM-based TTS</li>
+
+
+    </ul> -->
+
+    <table>
+      <tbody id="tbody_speech">
+      </tbody>
+    </table>
+
+
+
+</html>
+
+<script type="" text/javascript>
+  function short_form() {
+    let scenes = [
+      [0],[1],[2],[3],[4],[5]
+          ]
+    let models = ["CosyVoice", "DiT-CV",  "DiT-CVS", "StreamingFM-SR","StreamingFM-LR"]
+    short_data = ""
+    for (const id in models) {
+      model = models[id]
+  
+      short_data += '<td style="text-align: center; width: 14%;" rowspan=1><strong>' + model  + '<strong></td>'
+    }
+    short_data += `</tr>`
+    
+    for (let x in scenes) {
+      let scene = scenes[x]
+      let file = scene[0]
+      let scene_data = ""
+
+      scene_data += '<tr>'
+      for (let z in models) {
+        let model = models[z]
+        scene_data += '<td style="text-align: center"><audio style="width: 100%;" controls="" src="' + './raw/samples/' + model + '/' + file + '.wav' + '"></audio></td>'
+        
+      }
+      scene_data += '</tr>'
+      short_data += scene_data
+    }
+    return short_data
+  }
+    window.onload = function () {
+    document.getElementById('tbody_speech').innerHTML = short_form()
+  }
+ 
+</script> 
+
