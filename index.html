@@ -7,7 +7,7 @@
 
 
   <!-- Begin Jekyll SEO tag v2.7.1 -->
-  <title>StreamingFM: Streaming Flow Matching with Block-wise Guided Attention Mask for Speech Token Decoding</title>
+  <title>StreamFlow: Streaming Flow Matching with Block-wise Guided Attention Mask for Speech Token Decoding</title>
   <meta name="generator" content="Jekyll v3.9.0">
   <meta property="og:title" content="title">
   <meta property="og:locale" content="en_US">
@@ -41,7 +41,7 @@
 
   <section class="main-content">
     <h1 id="">
-      <center>StreamingFM: Streaming Flow Matching with Block-wise Guided Attention Mask for Speech Token Decoding</center>
+      <center>StreamFlow: Streaming Flow Matching with Block-wise Guided Attention Mask for Speech Token Decoding</center>
     </h1>
 
     <h3 id="">
@@ -56,7 +56,7 @@
     generation for audio quality, particularly in real-time interactions. Traditional frameworks integrating semantic tokens
     with flow matching (FM) struggle with streaming capabilities due to their reliance on a global receptive field.
     Additionally, directly implementing token-by-token streaming speech generation often results in degraded audio quality.
-    To address these challenges, we propose StreamingFM, a novel neural architecture that facilitates streaming flow
+    To address these challenges, we propose StreamFlow, a novel neural architecture that facilitates streaming flow
     matching with diffusion transformers (DiT). To mitigate the long-sequence extrapolation issues arising from lengthy
     historical dependencies, we have designed a local block-wise receptive field strategy. Specifically, the sequence is
     first segmented into blocks, and we introduce block-wise attention masks that enable the current block to receive
@@ -100,7 +100,7 @@
     let scenes = [
       [0],[1],[2],[3],[4],[5]
           ]
-    let models = ["CosyVoice(Non-Streaming)", "DiT-CV(Non-Streaming)",  "DiT-CVS", "StreamingFM-SR","StreamingFM-LR"]
+    let models = ["UNet-CV(Non-Streaming)", "DiT-CV(Non-Streaming)",  "DiT-CVS", "StreamFlow-SR","StreamFlow-LR"]
     short_data = ""
     for (const id in models) {
       model = models[id]
